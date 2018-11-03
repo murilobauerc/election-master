@@ -4,6 +4,7 @@ import br.edu.ulbra.election.election.input.v1.ElectionInput;
 import br.edu.ulbra.election.election.output.v1.GenericOutput;
 import br.edu.ulbra.election.election.output.v1.ElectionOutput;
 import br.edu.ulbra.election.election.service.ElectionService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,12 @@ public class ElectionApi {
     @ApiOperation(value = "Get election by Id")
     public ElectionOutput getById(@PathVariable Long electionId){
         return electionService.getById(electionId);
+    }
+
+    @GetMapping("/year/{year}")
+    @ApiOperation(value = "Get election list by Year")
+    public List<ElectionOutput> getByYear(@PathVariable Integer year) {
+        return electionService.getByYear(year);
     }
 
     @PostMapping("/")

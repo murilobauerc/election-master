@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import static br.edu.ulbra.election.election.utils.ValidateElectionInput.validateInput;
+
 @Service
 public class ElectionService {
 
@@ -71,7 +73,7 @@ public class ElectionService {
             throw new GenericOutputException(MESSAGE_ELECTION_NOT_FOUND);
         }
         election.setYear(electionInput.getYear());
-        election.setState_code(electionInput.getStateCode());
+        election.setStateCode(electionInput.getStateCode());
         election.setDescription(electionInput.getDescription());
 
         election = electionRepository.save(election);
@@ -92,20 +94,6 @@ public class ElectionService {
 
         return new GenericOutput("Election deleted");
     }
-
-    private void validateInput(ElectionInput electionInput, boolean isUpdate){
-
-        if (StringUtils.isBlank(electionInput.getStateCode())){
-            throw new GenericOutputException(electionInput.getStateCode() + "Is an invalid state code.");
-        }
-        if (StringUtils.isBlank(electionInput.getDescription())){
-            throw new GenericOutputException(electionInput.getDescription() + "Is an invalid description");
-        }
-        if (electionInput.getYear() == null){
-            throw new GenericOutputException(electionInput.getYear() + "Is an invalid year");
-        }
-    }
-
 }
 
 

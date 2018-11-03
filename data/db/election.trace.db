@@ -1,0 +1,9 @@
+2018-11-03 16:09:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DATABASECHANGELOGLOCK" not found; SQL statement:
+select count(*) from PUBLIC.DATABASECHANGELOGLOCK [42102-197]
+2018-11-03 16:41:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "STATE_CODE VARCHAR(5) NOT NULL": "'MaaaaaG' (7)"; SQL statement:
+/* insert br.edu.ulbra.election.election.model.Election */ insert into election (id, description, state_code, year) values (null, ?, ?, ?) [22001-197]
+2018-11-03 16:41:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "STATE_CODE VARCHAR(5) NOT NULL": "'MaaaaaG' (7)"; SQL statement:
+/* insert br.edu.ulbra.election.election.model.Election */ insert into election (id, description, state_code, year) values (null, ?, ?, ?) [22001-197]
