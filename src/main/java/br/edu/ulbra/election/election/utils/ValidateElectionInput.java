@@ -10,7 +10,7 @@ public class ValidateElectionInput {
     /**
      * Throw an generic exception if state code or/and description is blank.
      * Throw an generic exception if year is null.
-     * @param electionInput can be a state code, description or year.
+     * @param electionInput object that can be a state code, description or year.
      * @param isUpdate boolean value that verifies whether it is updated in the database or not
      * @throws GenericOutputException if the fields state code, description or year goes wrong.
      */

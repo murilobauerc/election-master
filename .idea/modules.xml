@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/election.iml" filepath="$PROJECT_DIR$/.idea/modules/election.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/election_main.iml" filepath="$PROJECT_DIR$/.idea/modules/election_main.iml" group="election" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/election_test.iml" filepath="$PROJECT_DIR$/.idea/modules/election_test.iml" group="election" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/voter.iml" filepath="$PROJECT_DIR$/.idea/modules/voter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/voter_main.iml" filepath="$PROJECT_DIR$/.idea/modules/voter_main.iml" group="voter" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/voter_test.iml" filepath="$PROJECT_DIR$/.idea/modules/voter_test.iml" group="voter" />
     </modules>
   </component>
 </project>
