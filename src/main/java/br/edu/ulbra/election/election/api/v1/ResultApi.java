@@ -20,5 +20,4 @@ public class ResultApi {
     public ElectionCandidateResultOutput getResultByCandidate(@PathVariable Long candidateId){
         return new ElectionCandidateResultOutput();
     }
-
 }
