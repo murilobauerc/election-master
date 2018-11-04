@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import static br.edu.ulbra.election.election.utils.ValidateElectionInput.validateDescriptionName;
 import static br.edu.ulbra.election.election.utils.ValidateElectionInput.validateInput;
 
 @Service
@@ -44,6 +45,7 @@ public class ElectionService {
 
     public ElectionOutput create(ElectionInput electionInput) {
         validateInput(electionInput, false);
+        validateDescriptionName(electionInput);
         Election election = modelMapper.map(electionInput, Election.class);
         election = electionRepository.save(election);
         return modelMapper.map(election, ElectionOutput.class);
@@ -67,6 +69,7 @@ public class ElectionService {
             throw new GenericOutputException(MESSAGE_INVALID_ID);
         }
         validateInput(electionInput, true);
+        validateDescriptionName(electionInput);
 
         Election election = electionRepository.findById(electionId).orElse(null);
         if (election == null){
