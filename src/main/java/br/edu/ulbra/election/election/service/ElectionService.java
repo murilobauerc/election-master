@@ -6,7 +6,6 @@ import br.edu.ulbra.election.election.model.Election;
 import br.edu.ulbra.election.election.output.v1.ElectionOutput;
 import br.edu.ulbra.election.election.output.v1.GenericOutput;
 import br.edu.ulbra.election.election.repository.ElectionRepository;
-import org.apache.commons.lang.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,9 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import static br.edu.ulbra.election.election.utils.ValidateElectionInput.validateDescriptionName;
-import static br.edu.ulbra.election.election.utils.ValidateElectionInput.validateInput;
+import static br.edu.ulbra.election.election.util.ValidateElectionInput.validateDescriptionName;
+import static br.edu.ulbra.election.election.util.ValidateElectionInput.validateInput;
+import static br.edu.ulbra.election.election.util.ValidateElectionInput.validateYearElection;
 
 @Service
 public class ElectionService {
@@ -46,6 +46,7 @@ public class ElectionService {
     public ElectionOutput create(ElectionInput electionInput) {
         validateInput(electionInput, false);
         validateDescriptionName(electionInput);
+        validateYearElection(electionInput);
         Election election = modelMapper.map(electionInput, Election.class);
         election = electionRepository.save(election);
         return modelMapper.map(election, ElectionOutput.class);
@@ -70,6 +71,7 @@ public class ElectionService {
         }
         validateInput(electionInput, true);
         validateDescriptionName(electionInput);
+        validateYearElection(electionInput);
 
         Election election = electionRepository.findById(electionId).orElse(null);
         if (election == null){
