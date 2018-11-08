@@ -42,7 +42,7 @@ public class ValidateElectionInput {
     }
 
     public static void validateYearElection(ElectionInput electionInput){
-        if(electionInput.getYear() < 2000 && electionInput.getYear() > 2200) {
+        if(electionInput.getYear() < 2000 || electionInput.getYear() > 2200) {
             throw new GenericOutputException("The year must be greater than or equal to 2000 and less than 2200.");
         }
     }
