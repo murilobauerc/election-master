@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 @Entity
 public class Vote {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,6 +16,12 @@ public class Vote {
 
     @Column(nullable = false)
     private Long candidateId;
+
+    @Column(nullable = false)
+    private Boolean blankVote;
+
+    @Column(nullable = false)
+    private Boolean nullVote;
 
     public Long getId() {
         return id;
@@ -50,4 +55,19 @@ public class Vote {
         this.candidateId = candidateId;
     }
 
+    public Boolean getBlankVote() {
+        return blankVote;
+    }
+
+    public void setBlankVote(Boolean blankVote) {
+        this.blankVote = blankVote;
+    }
+
+    public Boolean getNullVote() {
+        return nullVote;
+    }
+
+    public void setNullVote(Boolean nullVote) {
+        this.nullVote = nullVote;
+    }
 }
