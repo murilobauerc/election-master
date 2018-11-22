@@ -14,22 +14,21 @@ import java.util.List;
 @Controller
 @RequestMapping("/v1/vote")
 public class VoteApi {
-    private final VoteService voteService;
 
+    private final VoteService voteService;
 
     @Autowired
     public VoteApi(VoteService voteService){
         this.voteService = voteService;
     }
 
-    @PutMapping("/{electionId}")
+    @PutMapping("/")
     public GenericOutput electionVote(@RequestBody VoteInput voteInput){
-    //    return voteService.update(voteInput);
-        return new GenericOutput("OK");
+        return voteService.electionVote(voteInput);
     }
 
     @PutMapping("/multiple")
     public GenericOutput multipleElectionVote(@RequestBody List<VoteInput> voteInputList){
-        return new GenericOutput("OK");
+        return voteService.multiple(voteInputList);
     }
 }
