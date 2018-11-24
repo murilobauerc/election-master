@@ -61,6 +61,10 @@ public class VoteService {
         return new GenericOutput("OK");
     }
 
+    public Boolean getVoteByVoterId(Long id) {
+        return voteRepository.findByVoterId(id) != null ? true : false;
+    }
+
     public Election validateInput(Long electionId, VoteInput voteInput){
         Election election = electionRepository.findById(electionId).orElse(null);
         if (election == null){

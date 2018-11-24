@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import static br.edu.ulbra.election.election.util.ValidateElectionInput.validateDescriptionName;
-import static br.edu.ulbra.election.election.util.ValidateElectionInput.validateInput;
-import static br.edu.ulbra.election.election.util.ValidateElectionInput.validateYearElection;
+import static br.edu.ulbra.election.election.util.ValidateElectionInput.*;
 
 @Service
 public class ElectionService {
@@ -36,6 +34,7 @@ public class ElectionService {
     public List<ElectionOutput> getByYear(Integer year){
         Type electionOutputListType = new TypeToken<List<ElectionOutput>>(){}.getType();
         return modelMapper.map(electionRepository.findByYear(year), electionOutputListType);
+
     }
 
     public List<ElectionOutput> getAll(){
@@ -47,6 +46,7 @@ public class ElectionService {
         validateInput(electionInput, false);
         validateDescriptionName(electionInput);
         validateYearElection(electionInput);
+//        validateDuplicateCodeElection(electionInput, null);
         Election election = modelMapper.map(electionInput, Election.class);
         election = electionRepository.save(election);
         return modelMapper.map(election, ElectionOutput.class);
@@ -72,6 +72,7 @@ public class ElectionService {
         validateInput(electionInput, true);
         validateDescriptionName(electionInput);
         validateYearElection(electionInput);
+//        validateDuplicateCodeElection(electionInput, null);
 
         Election election = electionRepository.findById(electionId).orElse(null);
         if (election == null){

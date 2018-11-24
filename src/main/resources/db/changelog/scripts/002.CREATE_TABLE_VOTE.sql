@@ -1,8 +1,9 @@
-create table vote(
+create table vote (
   id integer identity primary key,
-  electionId integer not null,
-  voterId integer not null,
-  candidateId integer not null
-  blankVote boolean not null,
-  nullVote boolean not null
+  election_id integer not null,
+  voter_id integer not null,
+  candidate_id integer,
+  blank_vote boolean not null,
+  null_vote boolean not null
 );
+
