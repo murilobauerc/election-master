@@ -1,5 +1,6 @@
 package br.edu.ulbra.election.election.util;
 
+import br.edu.ulbra.election.election.enums.StateCodes;
 import br.edu.ulbra.election.election.exception.GenericOutputException;
 import br.edu.ulbra.election.election.input.v1.ElectionInput;
 import br.edu.ulbra.election.election.repository.ElectionRepository;
@@ -52,6 +53,13 @@ public class ValidateElectionInput {
         }
     }
 
+    public static void validateStateCode(ElectionInput electionInput)  {
+        try{
+            StateCodes.valueOf(electionInput.getStateCode());
+        }catch(IllegalArgumentException | GenericOutputException exception){
+            throw new GenericOutputException("The state code not suitable for valid states or is invalid");
+        }
+    }
 
     /**
      * Throw an generic exception if the election's year is not in the range specified.

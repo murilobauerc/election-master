@@ -46,6 +46,7 @@ public class ElectionService {
         validateInput(electionInput, false);
         validateDescriptionName(electionInput);
         validateYearElection(electionInput);
+        validateStateCode(electionInput);
 //        validateDuplicateCodeElection(electionInput, null);
         Election election = modelMapper.map(electionInput, Election.class);
         election = electionRepository.save(election);
@@ -72,6 +73,7 @@ public class ElectionService {
         validateInput(electionInput, true);
         validateDescriptionName(electionInput);
         validateYearElection(electionInput);
+        validateStateCode(electionInput);
 //        validateDuplicateCodeElection(electionInput, null);
 
         Election election = electionRepository.findById(electionId).orElse(null);
