@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ElectionRepository extends CrudRepository<Election, Long> {
     List<Election> findByYear(Integer year);
+
     Election findFirstByYearAndStateCodeAndDescription(Integer year, String stateCode, String description);
 }
 

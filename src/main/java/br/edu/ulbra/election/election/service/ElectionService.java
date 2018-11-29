@@ -74,7 +74,7 @@ public class ElectionService {
         validateDescriptionName(electionInput);
         validateYearElection(electionInput);
         validateStateCode(electionInput);
-//        validateDuplicateCodeElection(electionInput, null);
+//        validateDuplicateCodeElection(electionInput, electionId);
 
         Election election = electionRepository.findById(electionId).orElse(null);
         if (election == null){

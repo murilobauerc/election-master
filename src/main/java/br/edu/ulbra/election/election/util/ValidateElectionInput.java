@@ -3,6 +3,7 @@ package br.edu.ulbra.election.election.util;
 import br.edu.ulbra.election.election.enums.StateCodes;
 import br.edu.ulbra.election.election.exception.GenericOutputException;
 import br.edu.ulbra.election.election.input.v1.ElectionInput;
+import br.edu.ulbra.election.election.model.Election;
 import br.edu.ulbra.election.election.repository.ElectionRepository;
 import br.edu.ulbra.election.election.repository.VoteRepository;
 import org.apache.commons.lang.StringUtils;
@@ -78,12 +79,12 @@ public class ValidateElectionInput {
      * @param electionInput  object which case it is the year, state code and description to be searched.
      * @throws GenericOutputException if code goes wrong.
      */
-//    public static void validateDuplicateCodeElection(ElectionInput electionInput, Long id){
-//        Election election = electionRepository.findFirstByYearAndStateCodeAndDescription(electionInput.getYear(), electionInput.getStateCode(), electionInput.getDescription());
-//        if (election != null && !election.getId().equals(id)){
-//            throw new GenericOutputException("Duplicate Code");
-//        }
-//    }
+    public static void validateDuplicateCodeElection(ElectionInput electionInput, Long id){
+        Election election = electionRepository.findFirstByYearAndStateCodeAndDescription(electionInput.getYear(), electionInput.getStateCode(), electionInput.getDescription());
+        if (election != null && !election.getId().equals(id)){
+            throw new GenericOutputException("Duplicate Code");
+        }
+    }
 
 
 
