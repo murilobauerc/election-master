@@ -64,9 +64,6 @@ public class ResultService {
         long blankVotes = 0;
         long nullVotes = 0;
         long allVotes = votes.size();
-        int i;
-
-
         for (Vote vote : votes) {
             if(vote.getBlankVote() && vote.getCandidateId() == null) {
                 blankVotes++;
@@ -81,7 +78,7 @@ public class ResultService {
 
         resultOutput.setTotalVotes(allVotes);
 
-        for(i = 0; i < candidates.size(); i++){
+        for(int i = 0; i < candidates.size(); i++){
             if(candidates.get(i).getElectionOutput().getId().compareTo(electionId) == 0){
                 electionCandidateResultOutputsList.add(getById(candidates.get(i).getId()));
             }
