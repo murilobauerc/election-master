@@ -66,16 +66,19 @@ public class ResultService {
         long allVotes = votes.size();
         int i;
 
-        for(i = 0; i < allVotes; i++){
-            if(votes.get(i).getBlankVote()){
+
+        for (Vote vote : votes) {
+            if(vote.getBlankVote() && vote.getCandidateId() == null) {
                 blankVotes++;
-            }else if(votes.get(i).getNullVote()){
+            }else if(vote.getNullVote() && vote.getCandidateId() == null){
                 nullVotes++;
             }
         }
 
         resultOutput.setBlankVotes(blankVotes);
         resultOutput.setNullVotes(nullVotes);
+
+
         resultOutput.setTotalVotes(allVotes);
 
         for(i = 0; i < candidates.size(); i++){
